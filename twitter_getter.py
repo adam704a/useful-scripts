@@ -316,6 +316,9 @@ class TweetSaver():
                             )
             if use_mongo:
                 
+                formatted_date = datetime.datetime.strptime(data['created_at'], '%a %b %d %X %z %Y')
+                data['created_at'] = formatted_date
+
                 # Push the JSON into MongoDB
                 collection.insert(data)
 
