@@ -74,6 +74,7 @@ import re
 import time
 import os,sys
 from elasticsearch import Elasticsearch
+import datetime
 
 # Establish some global variables
 counter           = 0
