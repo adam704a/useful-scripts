@@ -5,12 +5,11 @@ import dateutil.parser
 import slack
 import slack.chat
 
-slack.api_token = 'slack_token'
+slack.api_token = 'xoxp-2545393800-2545393802-2657397222-20472d'
 
-c = MongoClient("mongodb://user:pass@localhost")
-
-d = c.mj_sample
-l = d.mj_sample
+c = MongoClient("INSERT URI HERE")
+d = DATABASE NAME
+l = d.COLLECTION NAME
 
 counter = 1
 
