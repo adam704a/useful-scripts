@@ -75,6 +75,8 @@ import time
 import os,sys
 from elasticsearch import Elasticsearch
 import datetime
+import slack
+import slack.chat
 
 # Establish some global variables
 counter           = 0
@@ -109,6 +111,9 @@ from pymongo import MongoClient
 use_mongo      = False
 use_elasticsearch = True
 use_json_files = False
+
+SLACK_KEY = ''
+slack.api_token = SLACK_KEY
 
 if use_mongo:
 	uri          = 'mongodb://localhost'
@@ -322,7 +327,13 @@ class TweetSaver():
                 data['created_at'] = formatted_date
 
                 # Push the JSON into MongoDB
-                collection.insert(data)
+                try:
+                    collection.insert(data)
+                except:
+                    slack.chat.post_message('mjsif_pipeline', "Push to MongoDB failed! @adampreston", username="twitter_getter.py", icon_emoji=":taco:")
+                    print("Unable to push to Mongo...")
+
+                
 
 
         if output_format in (1,3):
