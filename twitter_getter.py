@@ -108,16 +108,11 @@ keep_tweets  = 99999999
 from pymongo import MongoClient
 
 
-use_mongo      = False
-use_elasticsearch = True
-use_json_files = False
-
 SLACK_KEY = ''
 slack.api_token = SLACK_KEY
 
 if use_mongo:
-	uri          = 'mongodb://localhost'
-	client       = MongoClient()
+	client       = MongoClient("mongodb://user:password@host.ip.org/database")
 	database_name  = "do_tweets"
 	database       = client[database_name]
 
