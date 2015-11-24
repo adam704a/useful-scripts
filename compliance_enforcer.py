@@ -10,16 +10,17 @@ import json
 from pymongo import MongoClient
 from twython import Twython 
 import requests
+import slack
+import slack.chat
+
+
+SLACK_KEY = ''
+slack.api_token = SLACK_KEY
 
 #-------------------User Defined Start-------------------------------------------------#
 def post_to_slack(msg):
-    payload = {
-            'text': msg,
-            'channel': '',
-            'username': '',
-            'icon_emoji': '::'
-    }
-    requests.post('', json=payload)
+    slack.chat.post_message('mjsif_pipeline', msg, username="twitter_getter.py", icon_emoji=":taco:")
+                    
 
 
 
